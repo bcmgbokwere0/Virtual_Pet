@@ -1,6 +1,6 @@
 package virtual_pet;
 
-public class VirtualPet {
+public class VirtualPet extends VirtualPetShelter {
     private String name;
     private int hunger;
     private int thirst;
@@ -10,6 +10,14 @@ public class VirtualPet {
     // Constructor
 
     public VirtualPet() {
+        setHunger(100);
+        setThirst(100);
+        setTiredness(100);
+        setMood(100);
+    }
+
+    public VirtualPet(String newName) {
+        setName(newName);
         setHunger(100);
         setThirst(100);
         setTiredness(100);
