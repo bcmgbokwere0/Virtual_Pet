@@ -18,6 +18,7 @@ public class VirtualPet extends VirtualPetShelter {
 
     public VirtualPet(String newName) {
         setName(newName);
+        // set pet description when creating a pet? allow user input or random generate. 
         setHunger(100);
         setThirst(100);
         setTiredness(100);
