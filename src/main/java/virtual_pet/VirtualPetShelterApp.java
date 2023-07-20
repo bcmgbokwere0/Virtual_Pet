@@ -10,7 +10,6 @@ public class VirtualPetShelterApp {
         HashMap<String, VirtualPet> petCollections = new HashMap<String, VirtualPet>();
 
         int option;
-        int petSelection;
         boolean quitGame = false;
         boolean goodInput = false;
 
@@ -64,7 +63,7 @@ public class VirtualPetShelterApp {
                 System.out.print(String.format("%-" + 5 + "s", pet.getTiredness()));
 
                 System.out.print("|");
-                
+
                 System.out.println(String.format("%-" + 5 + "s", pet.getMood()));
             }
 
@@ -137,17 +136,8 @@ public class VirtualPetShelterApp {
 
                 case 3:
                     System.out.println("----------------------------------------------------------");
-                    petSelection = gameplay.nextInt();
-                    while (true) {
-                        // setting up a while loop and switch statement to pick between pets in a
-                        // Map/collection.
-                        switch (petSelection) {
 
-                        }
-                        break;
-                    }
-
-                    System.out.println("You and " + petCollections.get(tempString).getName()
+                    System.out.println("You and " + tempString
                             + " played a fun game of virtual volleyball. \033[3m You let them win...\033[0m");
 
                     System.out.println("Mood Increased by 30.");

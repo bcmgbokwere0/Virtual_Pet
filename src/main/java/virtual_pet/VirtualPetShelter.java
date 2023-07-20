@@ -15,4 +15,12 @@ public VirtualPetShelter(){
     public void setCollection(String collection) {
         this.collection = collection;
     }
+
+
+    // Methods
+
+    public void allPets(){
+        //VirtualPet pet  petCollections.values();
+    }
 }
+
