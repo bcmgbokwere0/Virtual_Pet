@@ -17,11 +17,14 @@ public class VirtualPetShelterApp {
                 "Welcome to Brian's WCCI Virtual Pet Shelter! Here we take care of our virtual communities's virtual pets.");
 
         System.out.println(
-                "Thank you for choosing to volunteer with us and for admitting your own pet. Please input the name of your pet ");
+                "Thank you for choosing to volunteer with us and for admitting your own pet. Please input the name of your pet: ");
 
         String tempString = gameplay.nextLine();
 
-        petCollections.put(tempString, new VirtualPet(tempString));
+        System.out.println("Great! Now please input a description for the pet: ");
+        String petDescription = gameplay.nextLine();
+
+        petCollections.put(tempString, new VirtualPet(tempString, petDescription));
 
         System.out.println("------------------------------------------------------------------------------------");
 
@@ -48,6 +51,8 @@ public class VirtualPetShelterApp {
 
             // this will loop through each pet, and print out name, hunger, etc for each
             for (VirtualPet pet : petCollections.values()) {
+
+                // Can use /t as a tab rather than using the 5 character spacing.
                 System.out.print(String.format("%-" + 5 + "s", pet.getName()));
 
                 System.out.print("|");
@@ -137,16 +142,22 @@ public class VirtualPetShelterApp {
                 case 3:
                     System.out.println("----------------------------------------------------------");
 
+                    System.out.println("Which pet will you play with?");
+                    for (VirtualPet pet : petCollections.values()) {
+                        System.out.println((pet.getName()));
+                    }
+
+                    tempString = gameplay.next();
+                    System.out.println(
+                            tempString + " is " + petCollections.get(tempString).getDesc() + "\n");
+
                     System.out.println("You and " + tempString
                             + " played a fun game of virtual volleyball. \033[3m You let them win...\033[0m");
 
                     System.out.println("Mood Increased by 30.");
 
                     System.out.println("----------------------------------------------------------");
-
-                    // This case needs to pick a singular pet, maybe have an option for "play with
-                    // all" too?
-                    // petCollections.forEach((name, pet) -> pet.play());
+                    petCollections.get(tempString).play();
                     break;
 
                 case 4:
@@ -167,7 +178,11 @@ public class VirtualPetShelterApp {
 
                     tempString = gameplay.next();
 
-                    petCollections.put(tempString, new VirtualPet(tempString));
+                    System.out.println("Please give a description for " + tempString);
+                    petDescription = gameplay.next();
+
+                    petCollections.put(tempString, new VirtualPet(tempString, petDescription));
+                    petCollections.get(tempString).setDesc(petDescription);
 
                     break;
 
@@ -175,6 +190,7 @@ public class VirtualPetShelterApp {
                     System.out.println("Which pet will we welcome to a new happy family?");
                     for (VirtualPet pet : petCollections.values()) {
                         System.out.println((pet.getName()));
+                        System.out.println((pet.getDesc()));
                     }
 
                     tempString = gameplay.next();
@@ -202,5 +218,5 @@ public class VirtualPetShelterApp {
         gameplay.close();
         System.out.println("Thanks for Playing, the pets will miss you :).");
     }
-
+// Fix Wording, Make it Case sensitive or give error, fix presentability during case events, transfer map to collections in shelter.
 }

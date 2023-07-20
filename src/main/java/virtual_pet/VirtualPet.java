@@ -2,10 +2,7 @@ package virtual_pet;
 
 public class VirtualPet extends VirtualPetShelter {
     private String name;
-    private int hunger;
-    private int thirst;
-    private int tiredness;
-    private int mood;
+    private String description;
 
     // Constructor
 
@@ -16,9 +13,9 @@ public class VirtualPet extends VirtualPetShelter {
         setMood(100);
     }
 
-    public VirtualPet(String newName) {
+    public VirtualPet(String newName, String newDesc) {
         setName(newName);
-        // set pet description when creating a pet? allow user input or random generate. 
+        setDesc(newDesc);
         setHunger(100);
         setThirst(100);
         setTiredness(100);
@@ -34,36 +31,12 @@ public class VirtualPet extends VirtualPetShelter {
         this.name = name;
     }
 
-    public int getHunger() {
-        return hunger;
+    public String getDesc() {
+        return description;
     }
 
-    public void setHunger(int hunger) {
-        this.hunger = hunger;
-    }
-
-    public int getThirst() {
-        return thirst;
-    }
-
-    public void setThirst(int thirst) {
-        this.thirst = thirst;
-    }
-
-    public int getTiredness() {
-        return tiredness;
-    }
-
-    public void setTiredness(int tiredness) {
-        this.tiredness = tiredness;
-    }
-
-    public int getMood() {
-        return mood;
-    }
-
-    public void setMood(int mood) {
-        this.mood = mood;
+    public void setDesc(String description) {
+        this.description = description;
     }
 
     // Methods
