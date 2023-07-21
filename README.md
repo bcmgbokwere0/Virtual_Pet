@@ -1,3 +1,7 @@
+# Brian's Virtual Pet Shelter
+
+In this project, I created a VirtualPetShelter that can hold multiple pets a user creates and can interact with. This includes a tick method that effect's the pet object's elements such as: Hunger, Thirst, Mood, and Tiredness/Rest levels. User can also have pets be adopted/removed from the shelter and end the game whenever they're finished. There are a few more features I would love to add, but likely would need more time. Below are required tasks that have been checked to show completion. Hope you enjoy the Application!
+
 # Required Tasks
 ## VirtualPetShelterApp Class
 Create a main method that…
@@ -25,8 +29,8 @@ Create a main method that…
       
 ## VirtualPet Class
  - [X] Include instance variables representing:
-        - Name (from the above example, this might be "Tommy")
-        - Description (from the above example, this might be "smells like a Stargazer lily fresh with morning dew")
-        - Include a constructor that accepts a name and description
-        - Include a constructor that, in addition to name and description, accepts default values for the pet's attributes (hunger, boredom, etc)
-        - Do not include a default (zero arguments) constructor.
+   - Name (from the above example, this might be "Tommy")
+   - Description (from the above example, this might be "smells like a Stargazer lily fresh with morning dew")
+   - Include a constructor that accepts a name and description
+   - Include a constructor that, in addition to name and description, accepts default values for the pet's attributes (hunger, boredom, etc)
+   - Do not include a default (zero arguments) constructor.
