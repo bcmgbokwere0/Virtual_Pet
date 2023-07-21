@@ -1,32 +1,27 @@
 package virtual_pet;
 
+import java.util.HashMap;
+
 public class VirtualPetShelter {
-    private String name;
     private int hunger;
     private int thirst;
     private int tiredness;
     private int mood;
-    private String shelter;
+    HashMap<String, VirtualPet> petCollections;
 
+    // Constructor
     public VirtualPetShelter() {
+        petCollections = new HashMap<String, VirtualPet>();
 
     }
 
     // Getters and Setters
-    public String getPet() {
-        return shelter;
+    public VirtualPet getPet(String name) {
+        return petCollections.get(name);
     }
 
-    public void setPet(String shelter) {
-        this.shelter = shelter;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
+    public void setPet(VirtualPet newPet) {
+        this.petCollections.put(newPet.getName(), newPet);
     }
 
     public int getHunger() {
@@ -63,16 +58,16 @@ public class VirtualPetShelter {
 
     // Methods
 
-    public void allPets() {
-        // VirtualPet pet petCollections.values();
+    public HashMap<String, VirtualPet> allPets() {
+        return petCollections;
     }
 
-    public void addPet() {
-
+    public void addPet(VirtualPet newPet) {
+        this.petCollections.put(newPet.getName(), newPet);
     }
 
-    public void removePet() {
-
+    public void removePet(VirtualPet newPet) {
+        this.petCollections.remove(newPet.getName(), newPet);
     }
 
     public void feed() {

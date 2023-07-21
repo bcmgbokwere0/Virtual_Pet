@@ -65,11 +65,11 @@ public class VirtualPetShelterApp {
 
                 System.out.print("  |");
 
-                System.out.print(String.format("%-" + 5 + "s", pet.getTiredness()));
+                System.out.print(String.format("%-" + 5 + "s", pet.getMood()));
 
                 System.out.print("|");
 
-                System.out.println(String.format("%-" + 5 + "s", pet.getMood()));
+                System.out.println(String.format("%-" + 5 + "s", pet.getTiredness()));
             }
 
             System.out.println("----------------------------------------------------------");
@@ -182,6 +182,7 @@ public class VirtualPetShelterApp {
                     petDescription = gameplay.next();
 
                     petCollections.put(tempString, new VirtualPet(tempString, petDescription));
+                    // petCollections.addPet(tempString, new VirtualPet(tempString, petDescription));
                     petCollections.get(tempString).setDesc(petDescription);
 
                     break;
