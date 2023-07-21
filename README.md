@@ -25,8 +25,8 @@ Create a main method that…
       
 ## VirtualPet Class
  - [X] Include instance variables representing:
-  - Name (from the above example, this might be "Tommy")
-  - Description (from the above example, this might be "smells like a Stargazer lily fresh with morning dew")
-  - Include a constructor that accepts a name and description
-  - Include a constructor that, in addition to name and description, accepts default values for the pet's attributes (hunger, boredom, etc)
-  - Do not include a default (zero arguments) constructor.
+        - Name (from the above example, this might be "Tommy")
+        - Description (from the above example, this might be "smells like a Stargazer lily fresh with morning dew")
+        - Include a constructor that accepts a name and description
+        - Include a constructor that, in addition to name and description, accepts default values for the pet's attributes (hunger, boredom, etc)
+        - Do not include a default (zero arguments) constructor.
