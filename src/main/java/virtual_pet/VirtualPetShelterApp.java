@@ -134,7 +134,7 @@ public class VirtualPetShelterApp {
                 case 3:
                     System.out.println("----------------------------------------------------------");
 
-                    System.out.println("Which pet will you play with?");
+                    System.out.println("Which [pet] will you play with?");
                     for (VirtualPet pet : petCollections.allPets().values()) {
                         System.out.println(("[" + pet.getName() + "]"));
                         System.out.println(pet.getDesc());
@@ -178,7 +178,7 @@ public class VirtualPetShelterApp {
                     break;
 
                 case 6:
-                    System.out.println("Which pet will we welcome to a new happy family?");
+                    System.out.println("Which [pet] will we welcome to a new happy family?");
                     for (VirtualPet pet : petCollections.allPets().values()) {
                         System.out.println(("[" + pet.getName() + "]"));
                         System.out.println((pet.getDesc()));
