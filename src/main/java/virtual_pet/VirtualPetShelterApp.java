@@ -21,6 +21,7 @@ public class VirtualPetShelterApp {
         String tempString = gameplay.nextLine();
 
         System.out.println("Great! Now please input a description for the pet: ");
+
         String petDescription = gameplay.nextLine();
 
         petCollections.addPet(new VirtualPet(tempString, petDescription));
@@ -29,10 +30,9 @@ public class VirtualPetShelterApp {
 
         System.out.println("Wow " + petCollections.getPet(tempString).getName() + " is an awesome name.\n");
 
-        System.out.println(
-                "Hope you're ready to have fun working in our shelter! We need you to help take care of "
-                        + petCollections.getPet(tempString).getName()
-                        + " and others by feeding them, giving them water, playing with them, and making them happy! Be prepared for people to also drop off more pets or adopt! Lets get right into things!");
+        System.out.println("Hope you're ready to have fun working in our shelter! We need you to help take care of "
+                + petCollections.getPet(tempString).getName()
+                + " and others by feeding them, giving them water, playing with them, and making them happy! Be prepared for people to also drop off more pets or adopt! Lets get right into things!");
 
         System.out.println("------------------------------------------------------------------------------------");
 
@@ -86,7 +86,8 @@ public class VirtualPetShelterApp {
                 if (!gameplay.hasNextInt()) {
 
                     System.out.println("You must enter a number.");
-                } else {
+                }
+                else {
                     tempString = gameplay.nextLine();
                     option = Integer.parseInt(tempString);
                     if (option <= 7 && option > 0) {
@@ -104,99 +105,96 @@ public class VirtualPetShelterApp {
             }
             switch (option) {
 
-                case 1:
-                    System.out.println("----------------------------------------------------------");
+            case 1:
+                System.out.println("----------------------------------------------------------");
 
-                    System.out.println(
-                            "You fed all the pets! They all really enjoyed the food.");
+                System.out.println("You fed all the pets! They all really enjoyed the food.");
 
-                    System.out.println("All pets hunger Levels Increased by 20.");
+                System.out.println("All pets hunger Levels Increased by 20.");
 
-                    System.out.println("----------------------------------------------------------");
+                System.out.println("----------------------------------------------------------");
 
-                    petCollections.feedPets();
+                petCollections.feedPets();
 
-                    break;
+                break;
 
-                case 2:
-                    System.out.println("----------------------------------------------------------");
+            case 2:
+                System.out.println("----------------------------------------------------------");
 
-                    System.out
-                            .println("You gave all the pets a refreshing bowl of water.");
+                System.out.println("You gave all the pets a refreshing bowl of water.");
 
-                    System.out.println("Thirst Level Increased by 20.");
+                System.out.println("Thirst Level Increased by 20.");
 
-                    System.out.println("----------------------------------------------------------");
+                System.out.println("----------------------------------------------------------");
 
-                    petCollections.drinkPets();
-                    break;
+                petCollections.drinkPets();
+                break;
 
-                case 3:
-                    System.out.println("----------------------------------------------------------");
+            case 3:
+                System.out.println("----------------------------------------------------------");
 
-                    System.out.println("Which [pet] will you play with?");
-                    for (VirtualPet pet : petCollections.allPets().values()) {
-                        System.out.println(("[" + pet.getName() + "]"));
-                        System.out.println(pet.getDesc());
-                    }
+                System.out.println("Which [pet] will you play with?");
+                for (VirtualPet pet : petCollections.allPets().values()) {
+                    System.out.println(("[" + pet.getName() + "]"));
+                    System.out.println(pet.getDesc());
+                }
 
-                    tempString = gameplay.nextLine();
+                tempString = gameplay.nextLine();
 
-                    System.out.println("You and " + tempString
-                            + " played a fun game of virtual volleyball. \033[3m You let them win...\033[0m");
+                System.out.println("You and " + tempString
+                        + " played a fun game of virtual volleyball. \033[3m You let them win...\033[0m");
 
-                    System.out.println("Mood Increased by 30.");
+                System.out.println("Mood Increased by 30.");
 
-                    System.out.println("----------------------------------------------------------");
-                    petCollections.play(tempString);
-                    break;
+                System.out.println("----------------------------------------------------------");
+                petCollections.play(tempString);
+                break;
 
-                case 4:
-                    System.out.println("----------------------------------------------------------");
+            case 4:
+                System.out.println("----------------------------------------------------------");
 
-                    System.out.println(
-                            "You tucked all of the pets into their virtual beds.");
+                System.out.println("You tucked all of the pets into their virtual beds.");
 
-                    System.out.println("Pets became well rested.");
+                System.out.println("Pets became well rested.");
 
-                    System.out.println("----------------------------------------------------------");
+                System.out.println("----------------------------------------------------------");
 
-                    petCollections.sleepPets();
-                    break;
+                petCollections.sleepPets();
+                break;
 
-                case 5:
-                    System.out.println("Whats the name of the new pet we will admit?");
+            case 5:
+                System.out.println("Whats the name of the new pet we will admit?");
 
-                    tempString = gameplay.nextLine();
+                tempString = gameplay.nextLine();
 
-                    System.out.println("Please give a description for " + tempString);
-                    petDescription = gameplay.nextLine();
+                System.out.println("Please give a description for " + tempString);
+                petDescription = gameplay.nextLine();
 
-                    petCollections.addPet(new VirtualPet(tempString, petDescription));
-                    petCollections.getPet(tempString).setDesc(petDescription);
+                petCollections.addPet(new VirtualPet(tempString, petDescription));
+                petCollections.getPet(tempString).setDesc(petDescription);
 
-                    break;
+                break;
 
-                case 6:
-                    System.out.println("Which [pet] will we welcome to a new happy family?");
-                    for (VirtualPet pet : petCollections.allPets().values()) {
-                        System.out.println(("[" + pet.getName() + "]"));
-                        System.out.println((pet.getDesc()));
-                    }
+            case 6:
+                System.out.println("Which [pet] will we welcome to a new happy family?");
+                for (VirtualPet pet : petCollections.allPets().values()) {
+                    System.out.println(("[" + pet.getName() + "]"));
+                    System.out.println((pet.getDesc()));
+                }
 
-                    tempString = gameplay.nextLine();
+                tempString = gameplay.nextLine();
 
-                    petCollections.removePet(tempString);
+                petCollections.removePet(tempString);
 
-                    System.out.println(
-                            "Say goodbye to " + tempString + "! Hope they're happy in their new loving virtual home!");
+                System.out.println(
+                        "Say goodbye to " + tempString + "! Hope they're happy in their new loving virtual home!");
 
-                    break;
+                break;
 
-                case 7:
-                    gameplay.close();
-                    quitGame = true;
-                    break;
+            case 7:
+                gameplay.close();
+                quitGame = true;
+                break;
             }
 
             if (quitGame) {
