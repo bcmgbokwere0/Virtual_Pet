@@ -1,13 +1,12 @@
 package virtual_pet;
 
-import java.util.HashMap;
 import java.util.Scanner;
 
 public class VirtualPetShelterApp {
     public static void main(String[] args) {
         Scanner gameplay = new Scanner(System.in);
 
-        HashMap<String, VirtualPet> petCollections = new HashMap<String, VirtualPet>();
+        VirtualPetShelter petCollections = new VirtualPetShelter();
 
         int option;
         boolean quitGame = false;
@@ -24,38 +23,31 @@ public class VirtualPetShelterApp {
         System.out.println("Great! Now please input a description for the pet: ");
         String petDescription = gameplay.nextLine();
 
-        petCollections.put(tempString, new VirtualPet(tempString, petDescription));
+        petCollections.addPet(new VirtualPet(tempString, petDescription));
 
         System.out.println("------------------------------------------------------------------------------------");
 
-        System.out.println("Wow " + petCollections.get(tempString).getName() + " is an awesome name.\n");
+        System.out.println("Wow " + petCollections.getPet(tempString).getName() + " is an awesome name.\n");
 
         System.out.println(
                 "Hope you're ready to have fun working in our shelter! We need you to help take care of "
-                        + petCollections.get(tempString).getName()
+                        + petCollections.getPet(tempString).getName()
                         + " and others by feeding them, giving them water, playing with them, and making them happy! Be prepared for people to also drop off more pets or adopt! Lets get right into things!");
 
         System.out.println("------------------------------------------------------------------------------------");
 
         while (true) {
-            System.out.println("Current Stats for all pets:");
+            System.out.println("Current Stats for all pets:\n");
 
-            System.out.println("Pets |Hunger |Thirst |Mood |Tiredness ");
+            System.out.println("Pets   |Hunger |Thirst |Mood |Tiredness ");
 
-            System.out.println("-----|-------|-------|-----|--------");
+            System.out.println("-------|-------|-------|-----|--------");
 
-            // % = format specifier
-            // - = going right to left, not left to right
-            // s = placeholder for the string we pass
-            // 5 = number spaces we want as padding
+            for (VirtualPet pet : petCollections.allPets().values()) {
 
-            // this will loop through each pet, and print out name, hunger, etc for each
-            for (VirtualPet pet : petCollections.values()) {
-
-                // Can use /t as a tab rather than using the 5 character spacing.
                 System.out.print(String.format("%-" + 5 + "s", pet.getName()));
 
-                System.out.print("|");
+                System.out.print("  |");
 
                 System.out.print(String.format("%-" + 5 + "s", pet.getHunger()));
 
@@ -95,8 +87,8 @@ public class VirtualPetShelterApp {
 
                     System.out.println("You must enter a number.");
                 } else {
-                    option = gameplay.nextInt();
-
+                    tempString = gameplay.nextLine();
+                    option = Integer.parseInt(tempString);
                     if (option <= 7 && option > 0) {
                         goodInput = true;
                     }
@@ -122,7 +114,7 @@ public class VirtualPetShelterApp {
 
                     System.out.println("----------------------------------------------------------");
 
-                    petCollections.forEach((name, pet) -> pet.feed());
+                    petCollections.feedPets();
 
                     break;
 
@@ -136,20 +128,19 @@ public class VirtualPetShelterApp {
 
                     System.out.println("----------------------------------------------------------");
 
-                    petCollections.forEach((name, pet) -> pet.drink());
+                    petCollections.drinkPets();
                     break;
 
                 case 3:
                     System.out.println("----------------------------------------------------------");
 
                     System.out.println("Which pet will you play with?");
-                    for (VirtualPet pet : petCollections.values()) {
-                        System.out.println((pet.getName()));
+                    for (VirtualPet pet : petCollections.allPets().values()) {
+                        System.out.println(("[" + pet.getName() + "]"));
+                        System.out.println(pet.getDesc());
                     }
 
-                    tempString = gameplay.next();
-                    System.out.println(
-                            tempString + " is " + petCollections.get(tempString).getDesc() + "\n");
+                    tempString = gameplay.nextLine();
 
                     System.out.println("You and " + tempString
                             + " played a fun game of virtual volleyball. \033[3m You let them win...\033[0m");
@@ -157,7 +148,7 @@ public class VirtualPetShelterApp {
                     System.out.println("Mood Increased by 30.");
 
                     System.out.println("----------------------------------------------------------");
-                    petCollections.get(tempString).play();
+                    petCollections.play(tempString);
                     break;
 
                 case 4:
@@ -170,33 +161,32 @@ public class VirtualPetShelterApp {
 
                     System.out.println("----------------------------------------------------------");
 
-                    petCollections.forEach((name, pet) -> pet.sleep());
+                    petCollections.sleepPets();
                     break;
 
                 case 5:
                     System.out.println("Whats the name of the new pet we will admit?");
 
-                    tempString = gameplay.next();
+                    tempString = gameplay.nextLine();
 
                     System.out.println("Please give a description for " + tempString);
-                    petDescription = gameplay.next();
+                    petDescription = gameplay.nextLine();
 
-                    petCollections.put(tempString, new VirtualPet(tempString, petDescription));
-                    // petCollections.addPet(tempString, new VirtualPet(tempString, petDescription));
-                    petCollections.get(tempString).setDesc(petDescription);
+                    petCollections.addPet(new VirtualPet(tempString, petDescription));
+                    petCollections.getPet(tempString).setDesc(petDescription);
 
                     break;
 
                 case 6:
                     System.out.println("Which pet will we welcome to a new happy family?");
-                    for (VirtualPet pet : petCollections.values()) {
-                        System.out.println((pet.getName()));
+                    for (VirtualPet pet : petCollections.allPets().values()) {
+                        System.out.println(("[" + pet.getName() + "]"));
                         System.out.println((pet.getDesc()));
                     }
 
-                    tempString = gameplay.next();
+                    tempString = gameplay.nextLine();
 
-                    petCollections.remove(tempString);
+                    petCollections.removePet(tempString);
 
                     System.out.println(
                             "Say goodbye to " + tempString + "! Hope they're happy in their new loving virtual home!");
@@ -213,11 +203,10 @@ public class VirtualPetShelterApp {
                 break;
             }
 
-            petCollections.forEach((name, pet) -> pet.tick());
+            petCollections.tick();
         }
 
         gameplay.close();
         System.out.println("Thanks for Playing, the pets will miss you :).");
     }
-// Fix Wording, Make it Case sensitive or give error, fix presentability during case events, transfer map to collections in shelter.
 }
