@@ -1,15 +1,25 @@
 package virtual_pet;
 
-public class VirtualPet {
+public class VirtualPet extends VirtualPetShelter {
     private String name;
+    private String description;
     private int hunger;
     private int thirst;
     private int tiredness;
     private int mood;
 
-    // Constructor
+    // Constructors
 
     public VirtualPet() {
+        setHunger(100);
+        setThirst(100);
+        setTiredness(100);
+        setMood(100);
+    }
+
+    public VirtualPet(String newName, String newDesc) {
+        setName(newName);
+        setDesc(newDesc);
         setHunger(100);
         setThirst(100);
         setTiredness(100);
@@ -23,6 +33,14 @@ public class VirtualPet {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getDesc() {
+        return description;
+    }
+
+    public void setDesc(String description) {
+        this.description = description;
     }
 
     public int getHunger() {
@@ -58,6 +76,23 @@ public class VirtualPet {
     }
 
     // Methods
+
+    public void feed() {
+        setHunger(getHunger() + 20);
+    }
+
+    public void drink() {
+        setThirst(getThirst() + 20);
+    }
+
+    public void play() {
+        setMood(getMood() + 30);
+    }
+
+    public void sleep() {
+        setTiredness(100);
+    }
+
     public void tick() {
         setHunger(getHunger() - 5);
 
@@ -74,22 +109,6 @@ public class VirtualPet {
         } else if (getHunger() >= 20 || getThirst() >= 20) {
             setMood(getMood() - 20);
         }
-    }
-
-    public void feed() {
-        setHunger(getHunger() + 20);
-    }
-
-    public void drink() {
-        setThirst(getThirst() + 20);
-    }
-
-    public void play() {
-        setMood(getMood() + 30);
-    }
-
-    public void sleep() {
-        setTiredness(100);
     }
 
 }
