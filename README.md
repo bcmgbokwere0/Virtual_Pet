@@ -1,6 +1,6 @@
 # Brian's Virtual Pet Shelter
 
-In this project, I created a VirtualPetShelter that can hold multiple pets a user creates and can interact with. This includes a tick method that effect's the pet object's elements such as: Hunger, Thirst, Mood, and Tiredness/Rest levels. Those stats can then be raised by the user interacting with their pets; feeding them, watering them, etc.  User can also have pets be adopted/removed from the shelter and end the game whenever they're finished. There are a few more features I would love to add, but likely would need more time. Below are required tasks that have been checked to show completion. Hope you enjoy the Application!
+In this project, I created a VirtualPetShelterclass that uses a HashMap can hold multiple pets a user creates and can interact with. This includes a tick method that effect's the pet object's elements such as: Hunger, Thirst, Mood, and Tiredness/Rest levels. Those stats can then be raised by the user interacting with their pets; feeding them, watering them, etc.  User can also have pets be adopted/removed from the shelter and end the game whenever they're finished. There are a few more features I would love to add, but will have to be added at a later time. Below are required tasks that have been checked to show completion. Hope you enjoy the Application!
 
 # Required Tasks
 ## VirtualPetShelterApp Class
